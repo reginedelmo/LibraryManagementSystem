@@ -1,0 +1,17 @@
+﻿
+@{
+    ViewBag.Title = "Message";
+}
+
+<h2>Message</h2>
+
+@if (!string.IsNullOrEmpty(ViewBag.ErrorMessage))
+{
+    <div class="alert alert-danger">
+        @ViewBag.ErrorMessage
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>

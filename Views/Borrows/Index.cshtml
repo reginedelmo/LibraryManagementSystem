@@ -1,0 +1,104 @@
+﻿@model IEnumerable<LibraryManagementSystem.Models.Borrow>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Borrows History</h2>
+@{string uType = Session["UserType"] as String;
+  string uId = Session["UserID"] as String;
+  int userId = (Convert.ToInt32(uId));
+}
+
+@if (uType == "Librarian")
+{
+    <table class="table table-striped table-hover">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.BorrowID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Book.Title)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.User.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BorrowDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ReturnDate)
+            </th>
+            <th>Actions</th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(model => item.BorrowID)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Book.Title)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.User.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.BorrowDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ReturnDate)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.BorrowID }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.BorrowID }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.BorrowID })
+                </td>
+            </tr>
+        }
+
+    </table>
+
+}
+
+@if (uType == "Member")
+{
+    <table class="table table-striped table-hover">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Book.Title)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BorrowDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ReturnDate)
+            </th>
+            <th>Actions</th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            if (userId == item.UserID)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Book.Title)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.BorrowDate)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ReturnDate)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Return", "Return", new { id = item.BorrowID })
+                    </td>
+                </tr>
+            }
+
+        }
+
+    </table>
+}
