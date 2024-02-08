@@ -53,7 +53,4 @@ If you'd like to contribute to this project, you can directly push changes to th
     git push
     ```
 
-### License
-
-This project is licensed under the [MIT License](LICENSE.md).
 
