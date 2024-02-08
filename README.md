@@ -1,4 +1,4 @@
-# KOI ICT272 - Group Repository for Library Management System
+# Library Management System
 
 ## Description
 
