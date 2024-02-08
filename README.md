@@ -1,4 +1,4 @@
-﻿﻿# KOI ICT272 Assessment 3 - Group Repository
+# KOI ICT272 - Group Repository for Library Management System
 
 ## Description
 
